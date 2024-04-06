@@ -1,0 +1,30 @@
+from flask import Flask
+import random
+
+app = Flask(__name__)
+
+@app.route("/")
+def hello_world():
+    return '<a target="_blank" href="http://127.0.0.1:5000/random_fact">Dato_ramdom</a>'
+
+@app.route('/random_fact')
+def facts():
+    facts_list = ["La Gran Muralla China es la única estructura hecha por el hombre que se puede ver desde el espacio exterior.",
+    "El ojo de una avestruz es más grande que su cerebro.",
+    "El corazón de una ballena azul puede pesar tanto como un automóvil.",
+    "Los pulpos tienen tres corazones.",
+    "Las hormigas no duermen.",
+    "El ajedrez se originó en la India.",
+    "El sonido no puede viajar a través del vacío.",
+    "El alfabeto más corto es el del idioma rotokas, con solo 12 letras.",
+    "El delfín nariz de botella es el único animal, aparte de los seres humanos, que muestra signos de conducta suicida.",
+    "La Luna se está alejando de la Tierra a una velocidad de aproximadamente 3.8 centímetros por año."
+    ]
+    return f'<p>{random.choice(facts_list)}</p><a target="_blank" href="http://127.0.0.1:5000/random_fact">Dato_ramdom</a>'
+
+@app.route('/ruta_secreta')
+def mensage():
+    return f'<p>Yo no se que poner aqui</p>'
+if __name__ == '__main__':
+    app.run(debug=True)
+
